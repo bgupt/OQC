@@ -1,6 +1,4 @@
-This is the README file for tests.
-
-The repository contains two files:
+This repository contains two files:
 
     (1): functions.py: This file contains the function definitions needed to solve parts 1-4 of the coding challenge. 
          For the convenience there are four different functions defined for each of the 4 parts. In addition there are 
