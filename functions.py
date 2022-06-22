@@ -2,6 +2,15 @@ import numpy as np
 
 
 def gates_and_angles(in_string):
+    '''
+    input:
+    
+        in_string (string) : input gate string with angle parameter
+        
+    output:
+        gates: list of gate string
+        angles: list of corresponding angles
+    '''
     
     ops = [item.strip() for item in in_string.split(',')]
 
@@ -35,6 +44,17 @@ def gates_and_angles(in_string):
 
 
 def part_1(in_string):
+    '''
+    Optimizes single qubit X, Y and Z gates by combining them in fewer gates.
+    
+    input:
+    
+        in_string (string) : input gate string with angle parameter
+        
+    output:
+        string: optimized gate string
+    '''
+
     
     gates, angles = gates_and_angles(in_string)
     
@@ -81,6 +101,17 @@ def part_1(in_string):
 
 
 def part_2(in_string):
+    '''
+    Similar to function part_1(). Optimizes single qubit X, Y and Z gates. Replaces Y gate with Z.X.Z format and then optimizes.
+    
+    input:
+    
+        in_string (string) : input gate string with angle parameter
+        
+    output:
+        string: optimized gate string
+    '''
+
 
     gates, angles = gates_and_angles(in_string)
     
@@ -119,7 +150,20 @@ def part_2(in_string):
 
 
 def part_3(in_string, LengthZ, LengthX):
+    '''
+    OPtimization of gates done in part_2(). This function computes the total gate time of optimized circuit. 
     
+    input:
+    
+        in_string (string) : input gate string with angle parameter
+        LengthZ (int): Z Gate time length
+        LengthX (int): X Gate time length
+        
+    output:
+        string: optimized gate string
+        gate_time: final optimized gate time.
+    '''
+
     g, a = gates_and_angles(part_2(in_string))
     
     gate_time = 0
@@ -136,6 +180,17 @@ def part_3(in_string, LengthZ, LengthX):
     
     
 def gates_qubits_and_angles(in_string):
+    '''
+    input:
+    
+        in_string (string) : input gate string with angle and qubit parameter
+        
+    output:
+        gates: list of gate string
+        qubits: list of qubits acted upon
+        angles: list of corresponding angles
+    '''
+
     
     ops_in = [item.strip() for item in in_string.split('),')]
 
@@ -197,6 +252,20 @@ def gates_qubits_and_angles(in_string):
 
 
 def part_4(in_string, length1Q, length2Q):
+    '''
+    Optimizes two qubit circuit with X, Z and CX gates by combining them. Then marks time stamp in the optimized circuit. 
+    
+    input:
+    
+        in_string (string) : input gate string with angle parameter.
+        length1Q: Single qubit gate time of X and Z gates.
+        length2Q: Single qubit gate time of CX gate.
+        
+    output:
+        string: optimized gate string with qubit, angle and operation time marking. 
+    '''
+
+
     
     gates, qubits, angles = gates_qubits_and_angles(in_string)
     
